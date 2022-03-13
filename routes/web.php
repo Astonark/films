@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActorController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,7 @@ Route::post('/film-create', [FilmController::class, 'store'])->name('film-store'
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('/category-create', [CategoryController::class, 'create'])->name('category-create');
 Route::post('/category-create', [CategoryController::class, 'store'])->name('category-store');
+
+Route::get('/actors', [ActorController::class, 'index'])->name('actors');
+Route::get('/actor-create', [ActorController::class, 'create'])->name('actor-create');
+Route::post('/actor-create', [ActorController::class, 'store'])->name('actor-store');

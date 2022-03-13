@@ -13,7 +13,7 @@
             <a href="{{ route('films') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                 Gérer mes films
             </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+            <a href="{{ route('actors') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                 Gérer les acteurs
             </a>
             <a href="{{ route('categories') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
