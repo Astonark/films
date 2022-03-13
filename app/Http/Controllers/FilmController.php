@@ -21,6 +21,6 @@ class FilmController extends Controller
 
     public function store(FilmRequest $request) {
         $film = Film::create($request->validated());
-        dd($request);
+        return redirect('/films');
     }
 }

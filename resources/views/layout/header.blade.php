@@ -16,7 +16,7 @@
             <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                 Gérer les acteurs
             </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+            <a href="{{ route('categories') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
                 Gérer les catégories
             </a>
         </div>
