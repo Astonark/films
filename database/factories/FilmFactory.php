@@ -18,7 +18,8 @@ class FilmFactory extends Factory
     {
         return [
             'category_id' => $this->faker->numberBetween(0, 10),
-            'running_time' => $this->faker->time()
+            'running_time' => $this->faker->time(),
+            'title' => $this->faker->word()
         ];
     }
 }

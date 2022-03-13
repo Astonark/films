@@ -9,6 +9,17 @@ class Film extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'title',
+        'running_time',
+        'category_id',
+    ];
+
     public function category() {
         return $this->belongsTo(Category::class);
     }

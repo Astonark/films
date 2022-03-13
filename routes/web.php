@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilmController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::view('/films', 'film.create')->name('films');
+Route::get('/films', [FilmController::class, 'index'])->name('films');
+Route::get('/film-create', [FilmController::class, 'create'])->name('film-create');
+Route::post('/film-create', [FilmController::class, 'store'])->name('film-store');
