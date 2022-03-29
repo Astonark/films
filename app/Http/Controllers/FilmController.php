@@ -59,4 +59,10 @@ class FilmController extends Controller
         $film->actors()->attach($request->input('actor_id'));
         return redirect('/film/show/' . $id);
     }
+
+    public function detachActor(Request $request) {
+        $film = Film::find($request->input('film_id'));
+        $film->actors()->detach($request->input('actor_id'));
+        return redirect('/film/show/' . $request->input('film_id'));
+    }
 }

@@ -28,6 +28,9 @@
                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                     Nom
                 </th>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    Supprimer
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -39,6 +42,16 @@
                         <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $actor->name }}
                         </td>
+                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <form action="{{ route('actor.datach') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="film_id" value="{{ $film->id }}">
+                            <input type="hidden" name="actor_id" value="{{ $actor->id }}">
+                            <input type="submit" name="delete" value="Supprimer">
+                        </form>
+                        </td>
+
                     </tr>
                 @endforeach
 

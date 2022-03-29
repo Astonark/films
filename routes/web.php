@@ -28,6 +28,7 @@ Route::get('/film/edit/{id}', [FilmController::class, 'show'])->name('film.edit.
 Route::put('/film/edit/{id}', [FilmController::class, 'edit'])->name('film.edit.perform');
 Route::get('/film/show/{id}', [FilmController::class, 'view'])->name('film.show');
 Route::post('/film/show/{id}', [FilmController::class, 'linkActor'])->name('actor.film.link');
+Route::delete('/film/show/', [FilmController::class, 'detachActor'])->name('actor.datach');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('/category-create', [CategoryController::class, 'create'])->name('category-create');
