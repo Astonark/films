@@ -26,7 +26,8 @@ class FilmRequest extends FormRequest
         return [
             'title' => 'required',
             'running_time' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'synopsis' => 'required'
         ];
     }
 }

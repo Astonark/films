@@ -13,6 +13,10 @@
             <input name="running_time" type="texte" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2h30" required>
         </div>
         <div class="mb-6">
+            <label for="synopsis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Synopsis du film</label>
+            <input name="synopsis" type="texte" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required>
+        </div>
+        <div class="mb-6">
             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Categorie</label>
             <select name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 @foreach($categories as $category)

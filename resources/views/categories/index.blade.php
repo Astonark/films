@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mx-auto">
-        <h1 class="text-center text-xl pt-8">MES FILMS</h1>
+        <h1 class="text-center text-xl pt-8">MES CATÉGORIES</h1>
 
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="{{ route('category-create') }}">Créer une categorie</a></button>
 
@@ -31,6 +31,17 @@
                                         </td>
                                         <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $category->name }}
+                                        </td>
+                                        <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                            <a href="{{ route('category.edit.show', $category->id) }}" class="text-blue-600 dark:text-blue-500 hover:underline">Modifer</a>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                            <form action="{{ route('category.delete') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="delete">
+                                                <input type="hidden" name="id" value="{{ $category->id }}">
+                                                <input type="submit" name="delete" value="Supprimer">
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

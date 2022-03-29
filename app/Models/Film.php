@@ -18,13 +18,14 @@ class Film extends Model
         'title',
         'running_time',
         'category_id',
+        'synopsis'
     ];
 
     public function category() {
         return $this->belongsTo(Category::class);
     }
 
-    public function actor() {
+    public function actors() {
         return $this->belongsToMany(Actor::class);
     }
 }
