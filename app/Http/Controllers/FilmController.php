@@ -7,6 +7,7 @@ use App\Models\Actor;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Category;
+use Illuminate\Support\Facades\Redirect;
 
 class FilmController extends Controller
 {
@@ -56,7 +57,11 @@ class FilmController extends Controller
 
     public function linkActor(Request $request, $id) {
         $film = Film::find($id);
-        $film->actors()->attach($request->input('actor_id'));
+        try {
+            $film->actors()->attach($request->input('actor_id'));
+        } catch (\Throwable $exception) {
+            return Redirect::back()->withErrors(['msg' => "L'acteur est déjà lié à ce film"]);
+        }
         return redirect('/film/show/' . $id);
     }
 

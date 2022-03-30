@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ActorRequest;
 use App\Models\Actor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ActorController extends Controller
 {
@@ -24,7 +25,11 @@ class ActorController extends Controller
 
     public function delete(Request $request) {
         $actor = Actor::find($request->input('id'));
-        $actor->delete();
+        try {
+            $actor->delete();
+        } catch (\Throwable $e) {
+            return Redirect::back()->withErrors(['msg' => "L'acteur ne peut pas être supprimé car il est lié à un film"]);
+        }
         return redirect('/actors');
     }
 

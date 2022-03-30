@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -24,8 +25,12 @@ class CategoryController extends Controller
 
     public function delete(Request $request) {
         $category = Category::find($request->input('id'));
-        $category->destroy($request->input('id'));
-        return redirect('/categories');
+        try {
+            $category->destroy($request->input('id'));
+            return redirect('/categories');
+        } catch (\Throwable $e  ) {
+            return Redirect::back()->withErrors(['msg' => 'La catégorie ne peut pas être supprimé car elle est lié à un film']);
+        }
     }
 
     public function show($id) {
