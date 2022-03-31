@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Film;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -12,9 +13,15 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function test_the_application_returns_a_successful_response()
+    public function test_get_page()
     {
         $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_named_route() {
+        $response = $this->get('films');
 
         $response->assertStatus(200);
     }
