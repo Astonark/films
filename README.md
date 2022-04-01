@@ -28,3 +28,19 @@ Ci dessous l'organisation les wireframes :
 ![img_5.png](img_5.png)
 
 ![img_6.png](img_6.png)
+
+
+Les différentes commandes pour installer le site :
+
+L'adresse du git public : https://github.com/Astonark/films
+
+Cloner le dépot en locale 
+
+Installation des dépendances : 
+
+- composer install
+- npm install
+
+Pour installer la base de données : 
+
+-php artisan migrate --seed
