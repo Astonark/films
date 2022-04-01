@@ -44,3 +44,7 @@ Installation des dépendances :
 Pour installer la base de données : 
 
 -php artisan migrate --seed
+
+Organisation du temps : 
+
+![img_7.png](img_7.png)
