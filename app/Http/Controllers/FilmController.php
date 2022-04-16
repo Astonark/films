@@ -28,6 +28,7 @@ class FilmController extends Controller
 
     public function delete(Request $request) {
         $film = Film::find($request->input('id'));
+        $film->actors()->detach();
         $film->delete();
         return redirect('/films');
     }
