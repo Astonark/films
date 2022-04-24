@@ -16,6 +16,7 @@ class Actor extends Model
      */
     protected $fillable = [
         'name',
+        'biography',
     ];
 
     public function films() {
