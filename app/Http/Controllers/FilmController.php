@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 class FilmController extends Controller
 {
     public function index () {
-        $films = Film::all();
+        $films = Film::paginate(10);
         return view('film.index', compact('films'));
     }
 

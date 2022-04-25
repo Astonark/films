@@ -62,6 +62,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                {{ $films->links('pagination::tailwind') }}
                             </div>
                         </div>
                     </div>

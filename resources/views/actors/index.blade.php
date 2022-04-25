@@ -58,6 +58,7 @@
                                 @endif
                                 </tbody>
                             </table>
+                            {{ $actors->links('pagination::tailwind') }}
                         </div>
                     </div>
                 </div>

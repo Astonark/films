@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 class ActorController extends Controller
 {
     public function index() {
-        $actors = Actor::all();
+        $actors = Actor::paginate(10);
         return view('actors.index', compact('actors'));
     }
 
