@@ -81,5 +81,73 @@
                 </td>
             </tbody>
         </table>
+
+        <div class="mt-20">
+            <p>Liste des tags : </p>
+        </div>
+
+        <table class="min-w-full mt-10">
+            <thead class="bg-gray-50 dark:bg-gray-700">
+            <tr>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    Id
+                </th>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    Nom
+                </th>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    Supprimer
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($tags as $tag)
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $tag->id }}
+                    </td>
+                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $tag->name }}
+                    </td>
+                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <form action="{{ route('actor.datach') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="film_id" value="{{ $tag->id }}">
+                            <input type="hidden" name="actor_id" value="{{ $tag->id }}">
+                            <input type="submit" name="delete" value="Supprimer">
+                        </form>
+                    </td>
+
+                </tr>
+            @endforeach
+            @if($errors->any())
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Erreur :</strong>
+                    <span class="block sm:inline">{{$errors->first()}}</span>
+                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                              </span>
+                </div>
+            @endif
+
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                ?
+            </td>
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <form class="pt-8" method="post" action="{{ route('tag.film.link', $film->id) }}">
+                    @csrf
+                    <select name="tag_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        @foreach($all_tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enregistrer</button>
+            </td>
+            </form>
+            </td>
+            </tbody>
+        </table>
+
     </div>
 @endsection

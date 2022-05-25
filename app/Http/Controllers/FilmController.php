@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FilmRequest;
 use App\Models\Actor;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Category;
@@ -36,6 +37,7 @@ class FilmController extends Controller
     public function show($id) {
         $film = Film::find($id);
         $categories = Category::all();
+        $tags = Tag::all();
         return view('film.edit', compact('film', 'categories'));
     }
 
@@ -53,7 +55,9 @@ class FilmController extends Controller
         $film = Film::find($id);
         $all_actors = Actor::all();
         $actors = $film->actors;
-        return view ('film.show', compact('film', 'actors', 'all_actors'));
+        $tags = $film->tags;
+        $all_tags = Tag::all();
+        return view ('film.show', compact('film', 'actors', 'all_actors', 'all_tags', 'tags'));
     }
 
     public function linkActor(Request $request, $id) {
@@ -66,9 +70,24 @@ class FilmController extends Controller
         return redirect('/film/show/' . $id);
     }
 
+    public function linkTag(Request $request, $id) {
+        $film = Film::find($id);
+        try {
+            $film->tags()->attach($request->input('tag_id'));
+        } catch (\Throwable $exception) {
+            return Redirect::back()->withErrors(['msg' => "Ce tag est déjà lié à ce film"]);
+        }
+        return redirect('/film/show/' . $id);
+    }
+
     public function detachActor(Request $request) {
         $film = Film::find($request->input('film_id'));
         $film->actors()->detach($request->input('actor_id'));
         return redirect('/film/show/' . $request->input('film_id'));
+    }
+
+    public function toJson() {
+        $films = Film::all();
+        return $films->toJson();
     }
 }

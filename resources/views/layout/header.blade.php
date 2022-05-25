@@ -19,6 +19,9 @@
             <a href="{{ route('categories') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
                 Gérer les catégories
             </a>
+            <a href="{{ route('tags') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                Gérer les tags
+            </a>
         </div>
     </div>
 </nav>

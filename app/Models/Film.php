@@ -28,4 +28,8 @@ class Film extends Model
     public function actors() {
         return $this->belongsToMany(Actor::class);
     }
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
 }

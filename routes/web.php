@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,14 @@ Route::put('/film/edit/{id}', [FilmController::class, 'edit'])->name('film.edit.
 Route::get('/film/show/{id}', [FilmController::class, 'view'])->name('film.show');
 Route::post('/film/show/{id}', [FilmController::class, 'linkActor'])->name('actor.film.link');
 Route::delete('/film/show/', [FilmController::class, 'detachActor'])->name('actor.datach');
+Route::get('/films/json', [FilmController::class, 'toJson'])->name('films.to.json');
+
+Route::get('/tags', [TagController::class, 'index'])->name('tags');
+Route::get('/tag-create', [TagController::class, 'create'])->name('tag.create');
+Route::post('/tag-create', [TagController::class, 'store'])->name('tag.store');
+Route::delete('tag/show', [TagController::class, 'delete'])->name('tag.delete');
+Route::post('/film.show/{id}', [FilmController::class, 'linkTag'])->name('tag.film.link');
+
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('/category-create', [CategoryController::class, 'create'])->name('category-create');
